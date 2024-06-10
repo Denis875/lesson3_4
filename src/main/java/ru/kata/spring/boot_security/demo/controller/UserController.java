@@ -1,7 +1,6 @@
 package ru.kata.spring.boot_security.demo.controller;
 
 import com.sun.istack.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,12 +21,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/")
 public class UserController {
-    @Autowired
-    private UserService us;
-    @Autowired
-    private RoleService rs;
-    @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
+    private final UserService us;
+    private final RoleService rs;
+    private final PasswordEncoder bCryptPasswordEncoder;
+
+    public UserController(UserService us, RoleService rs, PasswordEncoder bCryptPasswordEncoder) {
+        this.us = us;
+        this.rs = rs;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     /**
      * RestController for User page about user information

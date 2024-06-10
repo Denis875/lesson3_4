@@ -12,8 +12,8 @@ import java.util.Set;
 
 @Component
 public class Initializer {
-    private UserService userService;
-    private RoleService roleService;
+    private final UserService userService;
+    private final RoleService roleService;
 
     public Initializer(UserService userService, RoleService roleService) {
         this.userService = userService;
